@@ -12,13 +12,9 @@ path::path(const PNG & im, pair<int,int> s, pair<int,int> e)
 // used to initialize member variable pathPts.
 // called by constructor to create path if it
 // exists.
-//
-// requires: neighbors, good, assemble helperss
-
 void path::BFS(){
-	// initialize working vectors
-	vector<vector<bool>> V (image.height(), vector<bool> (image.width(),false));
-	vector<vector<pair<int,int>>> P (image.height(), vector<pair<int,int>> (image.width(),end));
+  vector<vector<bool>> V (image.height(), vector<bool> (image.width(),false));
+  vector<vector<pair<int,int>>> P (image.height(), vector<pair<int,int>> (image.width(),end));
 
   queue<pair<int, int>> q;
   pair<int, int> s = start;
@@ -78,8 +74,7 @@ vector<pair<int,int>> path::getPath() { return pathPts;}
 int path::length() { return pathPts.size();}
 
 // tests a neighbor (adjacent vertex) to see if it is
-// 1. within the image, 2. unvisited, and 3. close in color to curr.
-// An entry in table V is true if a cell has previously been
+// 1. within the image, 2. unvisited, and 3. close in color to curr. An entry in table V is true if a cell has previously been
 // visited.
 bool path::good(vector<vector<bool>> & v, pair<int,int> curr, pair<int,int> next){
   if (next.first >= (int) image.width() || next.first < 0 || next.second < 0 || next.second >=(int) image.height()){
@@ -96,20 +91,15 @@ bool path::good(vector<vector<bool>> & v, pair<int,int> curr, pair<int,int> next
 }
 
 // builds a vector containing the locations of the
-// four vertices adjacent to curr:
-// above, left, right, below (no particular order).
-// does not pay any attention to whether or not the neighbors are
-// valid (in the image, previously visited, or the right color).
+// four vertices adjacent to curr: above, left, right, below.
 vector<pair<int,int>> path::neighbors(pair<int,int> curr) {
 	vector<pair<int,int>> n;
   n.push_back(make_pair(curr.first-1, curr.second));//left
 
   n.push_back(make_pair(curr.first, curr.second+1));//below
   n.push_back(make_pair(curr.first+1, curr.second));//right
-
   n.push_back(make_pair(curr.first, curr.second-1));//above
   return n;
-    /* your code here */
 }
 
 
