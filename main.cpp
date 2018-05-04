@@ -12,7 +12,7 @@ int main()
 	origIm1.readFromFile("images/test.png");
 	pair<int,int> start(796,0);
   pair<int,int> end(803,1601);
-	path maze(origIm1,start1,end1);
+	path maze(origIm1,start,end);
 	PNG out1 = maze.render();
 	out1.writeToFile("images/testOut.png");
 
