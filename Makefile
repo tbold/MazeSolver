@@ -1,4 +1,4 @@
-EXE = pa4
+EXE = solver
 
 OBJS_EXE = RGBAPixel.o lodepng.o PNG.o path.o main.o
 
@@ -8,7 +8,7 @@ LD = clang++
 #LDFLAGS = -std=c++1y -stdlib=libc++ -lc++abi -lpthread -lm
 LDFLAGS = -std=c++1y -stdlib=libc++ -lpthread -lm
 
-all : pa4
+all : solver
 
 $(EXE) : $(OBJS_EXE)
 	$(LD) $(OBJS_EXE) $(LDFLAGS) -o $(EXE)
